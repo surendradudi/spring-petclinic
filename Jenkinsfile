@@ -1,23 +1,40 @@
 pipeline {
-    agent any 
-    //{ label 'JDK8' }
-    //triggers { pollSCM('* * * * *') }
+    agent { label 'JDK11' }
+    options { 
+        timeout(time: 1, unit: 'HOURS')
+        retry(2) 
+    }
+    triggers {
+        cron('0 * * * *')
+    }
     stages {
-        stage('SourceCode') {
+        stage('Source Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/surendradudi/spring-petclinic.git'
+                git url: 'https://github.com/surendradudi/spring-petclinic.git', 
+                branch: 'main'
+            }
+
+        }
+        stage('Build the Code') {
+            steps {
+                sh script: 'mvn clean package'
             }
         }
-        stage('Build') {
+        stage('reporting') {
             steps {
-                sh 'mvn clean package'
+                junit testResults: 'target/surefire-reports/*.xml'
             }
+
         }
-        stage('Archive and Test Results') {
-            steps {
-               junit '**/surefire-reports/*.xml'
-               archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
-            }
+    }
+    post {
+        success {
+            // send the success email
+            echo "Success"
+        }
+        unsuccessful {
+            //send the unsuccess email
+            echo "failure"
         }
     }
 }
