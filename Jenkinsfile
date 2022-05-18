@@ -27,14 +27,5 @@ pipeline {
 
         }
     }
-    post {
-        success {
-            // send the success email
-            echo "Success"
-        }
-        unsuccessful {
-            //send the unsuccess email
-            echo "failure"
-        }
-    }
+    
 }
