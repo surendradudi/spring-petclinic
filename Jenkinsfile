@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Check The Env') {
       steps {
-                echo "${params.ENV} Present environment!"
+                echo "${"params.ENV"} Present environment!"
             }
         }  
     stage('Message') {
@@ -50,11 +50,11 @@ pipeline {
 
         }
     
-    stage('Test') {
-      steps {
-                sh 'make check'
-            }
-        }
+    // stage('Test') {
+    //   steps {
+    //             sh 'make check'
+    //         }
+    //     }
     
     // post {
     //     always {
