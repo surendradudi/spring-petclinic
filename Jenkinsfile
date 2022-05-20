@@ -8,9 +8,9 @@ pipeline {
         cron('0 * * * *')
     }
     parameters {
-         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+         string(name: 'PERSON', defaultValue: 'Mr/Mrs Java', description: 'Who should I say hello to?')
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        text(name: 'BIOGRAPHY', defaultValue: 'In This Project I installed Some Required Pacakages', description: 'Enter some information about the person')
 
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
 
