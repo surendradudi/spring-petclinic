@@ -21,12 +21,14 @@ pipeline {
   stages {
     stage('Check The Env') {
       steps {
-                echo "${"params.ENV"} Present environment!"
+               
                  echo "Hello ${params.PERSON}"
 
                 echo "Biography: ${params.BIOGRAPHY}"
 
                 echo "Toggle: ${params.TOGGLE}"
+
+                 echo "${"params.ENV"} Present environment!"
 
                 echo "Password: ${params.PASSWORD}"
             }
