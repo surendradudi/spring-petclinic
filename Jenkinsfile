@@ -56,14 +56,16 @@ pipeline {
             }
         }
     
-    post {
-        always {
-            junit '**/target/*.xml'
-        }
-        failure {
-            mail to: surendradudi331@gmail.com, subject: 'The Pipeline failed :('
-        }
-    }
+    // post {
+    //     always {
+    //         junit '**/target/*.xml'
+    //     }
+    //     failure {
+    //         mail to: surendradudi331@gmail.com, subject: 'The Pipeline failed :('
+    //     }
+        
+    // }
     
   }
 }
+
