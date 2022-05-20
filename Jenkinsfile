@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
+        }
        
         stage('Source Code') {
             steps {
