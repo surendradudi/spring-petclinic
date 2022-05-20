@@ -16,7 +16,7 @@ pipeline {
 
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Branch')
 
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+        
   }
   stages {
     stage('Check The Env') {
@@ -30,7 +30,7 @@ pipeline {
 
                  echo "${"params.ENV"} Present environment!"
 
-                echo "Password: ${params.PASSWORD}"
+                
             }
         }  
 
