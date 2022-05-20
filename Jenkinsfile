@@ -34,7 +34,7 @@ pipeline {
             }
         }  
 
-      stage('Env Deploy') {
+    stage('Env Deploy') {
             when {
                 expression { BRANCH_NAME ==~ /(springboot3|gh-pages)/ }
                 anyOf {
