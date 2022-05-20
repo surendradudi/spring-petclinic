@@ -31,6 +31,15 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }  
+
+      stage('Env Deploy') {
+            when {
+                branch 'wavefront'
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }    
     stage('Message') {
       steps {
     
