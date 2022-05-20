@@ -50,5 +50,20 @@ pipeline {
 
         }
     
+    stage('Test') {
+      steps {
+                sh 'make check'
+            }
+        }
+    
+    post {
+        always {
+            junit '**/target/*.xml'
+        }
+        failure {
+            mail to: surendradudi331@gmail.com, subject: 'The Pipeline failed :('
+        }
+    }
+    
   }
 }
