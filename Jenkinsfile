@@ -22,12 +22,7 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
-   // stage('Packing') {
-     // steps {
-       //         sh 'make' 
-         //       archiveArtifacts artifacts: '***/target/*.jar', followSymlinks: false
-           // }
-        //}
+
         
     stage('Source Code') {
       steps {
@@ -39,6 +34,7 @@ pipeline {
     stage('Build the Code') {
       steps {
                 sh script: 'mvn clean package'
+                 archiveArtifacts artifacts: '***/target/*.jar', followSymlinks: false
                
             }
         }
