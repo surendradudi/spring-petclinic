@@ -18,8 +18,7 @@ pipeline {
         stage('Build the Code') {
             steps {
                 sh script: 'mvn clean package'
-                sh 'make' 
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+               
             }
         }
         stage('reporting') {
