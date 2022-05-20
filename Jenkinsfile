@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh script: 'mvn clean package'
                 sh 'make' 
-                archiveArtifacts artifacts: '/target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
         stage('reporting') {
@@ -30,11 +30,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                /* `make check` returns non-zero on test failures,
-                * using `true` to allow the Pipeline to continue nonetheless
-                */
                 sh 'make check || true' 
-                junit '/target/*.xml' 
+                junit 'target/*.xml' 
             }
         }
     }
