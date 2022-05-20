@@ -22,12 +22,12 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
-    stage('Packing') {
-      steps {
-                sh 'make' 
-                archiveArtifacts artifacts: '***/target/*.jar', followSymlinks: false
-            }
-        }
+   // stage('Packing') {
+     // steps {
+       //         sh 'make' 
+         //       archiveArtifacts artifacts: '***/target/*.jar', followSymlinks: false
+           // }
+        //}
         
     stage('Source Code') {
       steps {
