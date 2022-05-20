@@ -18,7 +18,6 @@ pipeline {
       }
     }
   }
-    stages {
         stage('checking_build_id & jenkins_url') {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
