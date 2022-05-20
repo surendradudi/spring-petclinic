@@ -8,12 +8,27 @@ pipeline {
         cron('0 * * * *')
     }
     parameters {
+         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Branch')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
   }
   stages {
     stage('Check The Env') {
       steps {
-                echo "${params.ENV} Present environment!"
+                echo "${"params.ENV"} Present environment!"
+                 echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Password: ${params.PASSWORD}"
             }
         }  
     stage('Message') {
@@ -49,22 +64,6 @@ pipeline {
             }
 
         }
-    
-    // stage('Test') {
-    //   steps {
-    //             sh 'make check'
-    //         }
-    //     }
-    
-    // post {
-    //     always {
-    //         junit '**/target/*.xml'
-    //     }
-    //     failure {
-    //         mail to: surendradudi331@gmail.com, subject: 'The Pipeline failed :('
-    //     }
-        
-    // }
     
   }
 }
