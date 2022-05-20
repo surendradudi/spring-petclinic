@@ -11,6 +11,11 @@ pipeline {
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Branch')
   }
   stages {
+    stage('Check The Env') {
+      steps {
+                echo "${params.ENV} Present environment!"
+            }
+        }  
     stage('Message') {
       steps {
     
@@ -44,10 +49,6 @@ pipeline {
             }
 
         }
-     stage('Check The Env') {
-            steps {
-                echo "${params.ENV} "
-            }
-        }  
+    
   }
 }
