@@ -34,7 +34,7 @@ pipeline {
     stage('Build the Code') {
       steps {
                 sh script: 'mvn clean package'
-                 archiveArtifacts artifacts: '***/target/*.jar', followSymlinks: false
+                 archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
                
             }
         }
@@ -44,5 +44,10 @@ pipeline {
             }
 
         }
+     stage('Check The Env') {
+            steps {
+                echo "${params.ENV} "
+            }
+        }  
   }
 }
