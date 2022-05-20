@@ -25,7 +25,7 @@ pipeline {
     stage('Packing') {
       steps {
                 sh 'make' 
-                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+                archiveArtifacts artifacts: '***/target/*.jar', followSymlinks: false
             }
         }
         
