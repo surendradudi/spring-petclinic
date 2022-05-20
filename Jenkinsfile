@@ -28,6 +28,7 @@ pipeline {
                 sh 'make' 
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
             }
+        }
         
         stage('Source Code') {
             steps {
@@ -48,9 +49,5 @@ pipeline {
             }
 
         }
-        
-    }
-    
-
   }
 }
