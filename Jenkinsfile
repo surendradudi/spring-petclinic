@@ -37,6 +37,7 @@ pipeline {
       stage('Env Deploy') {
             when {
                 branch 'wavefront'
+                environment name: 'DEPLOY_TO', value: 'wavefront'
             }
             steps {
                 echo 'Deploying'
