@@ -36,8 +36,10 @@ pipeline {
 
       stage('Env Deploy') {
             when {
-                branch 'wavefront'
-                environment name: 'DEPLOY_TO', value: 'wavefront'
+                expression { BRANCH_NAME ==~ /(springboot3|gh-pages)/ }
+                anyOf {
+                    environment name: 'DEPLOY_TO', value: 'springboot3'
+                    environment name: 'DEPLOY_TO', value: 'gh-pages'
             }
             steps {
                 echo 'Deploying'
