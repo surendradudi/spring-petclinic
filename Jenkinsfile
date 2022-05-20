@@ -10,7 +10,7 @@ pipeline {
     parameters {
          string(name: 'PERSON', defaultValue: 'Mr/Mrs Java', description: 'Who should I say hello to?')
 
-        text(name: 'BIOGRAPHY', defaultValue: 'In This Project I installed Some Required Pacakages', description: 'Enter some information about the person')
+        text(name: 'BIOGRAPHY', defaultValue: 'In This Project I installed Some Required Packages', description: 'Enter some information about the person')
 
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
 
@@ -28,7 +28,7 @@ pipeline {
 
                 echo "Toggle: ${params.TOGGLE}"
 
-                 echo "${"params.ENV"} Present environment!"
+                 echo "${params.ENV} Present environment!"
 
                 
             }
