@@ -8,6 +8,11 @@ pipeline {
         cron('0 * * * *')
     }
     stages {
+        stage('checking_build_id & jenkins_url') {
+            steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+       
         stage('Source Code') {
             steps {
                 git url: 'https://github.com/surendradudi/spring-petclinic.git', 
@@ -27,12 +32,7 @@ pipeline {
             }
 
         }
-        stage('Test') {
-            steps {
-                sh 'make check || true' 
-                junit 'target/*.xml' 
-            }
-        }
+        
     }
     
 }
