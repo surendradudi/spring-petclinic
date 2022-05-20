@@ -11,10 +11,10 @@ pipeline {
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Branch')
   }
   stages {
-    stage('Example') {
+    stage('Message') {
       steps {
-        /* WRONG! */
-        sh("echo ${STATEMENT}")
+    
+        sh("echo ${env.BUILD_ID}")
       }
     }
     stage('checking_build_id & jenkins_url') {
