@@ -13,13 +13,11 @@ pipeline {
         cron('0 * * * *')
     }
     parameters {
-         string(name: 'PERSON', defaultValue: 'Mr/Mrs Java', description: 'Who should I say hello to?')
-
-        text(name: 'BIOGRAPHY', defaultValue: 'In This Project I installed Some Required Packages', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Branch')
+        string(name: 'COMPONENT', defaultValue: '', description: 'What the component....?')
+        text(name: 'COMMENT', defaultValue: '', description: 'Write The Comment About The Job Why Are You Running....!!!')
+        booleanParam(name: 'FORCE_DEPLOYMENT', defaultValue: true, description: 'Check This For Force Deployment From Scrach')
+        choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Environment')
+        password(name='PASSWORD',defaultValue: 'SECRET', description: ' Enter Password')
 
         
   }
@@ -27,11 +25,11 @@ pipeline {
     stage('Check The Env') {
       steps {
                
-                 echo "Hello ${params.PERSON}"
+                 echo "Hello ${params.COMPONENT}"
 
-                echo "Biography: ${params.BIOGRAPHY}"
+                echo "Biography: ${params.COMMENT}"
 
-                echo "Toggle: ${params.TOGGLE}"
+                echo "Toggle: ${params.FORCE_DEPLOYMENT}"
 
                  echo "${params.ENV} Present environment!"
 
