@@ -10,7 +10,7 @@ pipeline {
         disableConcurrentBuilds()
     }
     tools {
-      maven '3.6'
+      maven 'mvn-3.6'
     }
     triggers {
         cron('*/5 * * * *')
