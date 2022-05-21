@@ -9,6 +9,9 @@ pipeline {
         retry(2) 
         disableConcurrentBuilds()
     }
+    tool {
+      maven '3.8'
+    }
     triggers {
         cron('*/5 * * * *')
     }
