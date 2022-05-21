@@ -16,7 +16,6 @@ pipeline {
         cron('*/5 * * * *')
     }
     parameters {
-        string(name: 'Software', defaultValue: '', description: 'What the component....?')
         text(name: 'COMMENT', defaultValue: '', description: 'Write The Comment About The Job Why Are You Running....!!!')
         booleanParam(name: 'FORCE_DEPLOYMENT', defaultValue: true, description: 'Check This For Force Deployment From Scrach')
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Environment')
@@ -30,8 +29,6 @@ pipeline {
         submitter "Alice,bob"
       }
       steps {
-               
-                 echo "Hello ${params.Software}"
                  echo "Biography: ${params.COMMENT}"
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!"      
@@ -42,7 +39,14 @@ pipeline {
         message "Should we continue?"
         ok " yes we should....!"
         submitter "Alice,bob"
-      } }    
+        parameters {
+           string(name: 'Software', defaultValue: '', description: 'What the component....?')
+        }
+      } 
+      steps{
+        echo "Hello ${params.Software}"
+      }
+      }    
     stage('Knowing About Project Name') {
       environment {
         PROJECT_NAME = "java"
