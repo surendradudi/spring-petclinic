@@ -17,8 +17,6 @@ pipeline {
         text(name: 'COMMENT', defaultValue: '', description: 'Write The Comment About The Job Why Are You Running....!!!')
         booleanParam(name: 'FORCE_DEPLOYMENT', defaultValue: true, description: 'Check This For Force Deployment From Scrach')
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Environment')
-        password(name='PASSWORD',defaultValue: 'SECRET', description: ' Enter Password')
-
         
   }
   stages {
@@ -28,11 +26,7 @@ pipeline {
                  echo "Hello ${params.COMPONENT}"
                  echo "Biography: ${params.COMMENT}"
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
-                 echo "${params.ENV} Present environment!"
-                 echo "my Password is ${params.PASSWORD}"
-
-
-                
+                 echo "${params.ENV} Present environment!"      
             }
         }
     stage('Knowing About Project Name') {
