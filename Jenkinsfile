@@ -1,5 +1,9 @@
 pipeline {
     agent {label 'agent'}
+    environment{
+      PROJECT_NAME = 'Spring-Petclinic'
+      UBUNTU_SSH_CRED = credentials('UBUNTU-SSH')
+    }
     options { 
         timeout(time: 1, unit: 'HOURS')
         retry(2) 
@@ -32,7 +36,16 @@ pipeline {
 
                 
             }
-        }  
+        }
+    stage('Knowing About Project Name') {
+      environment {
+        PROJECT_NAME = "java"
+      }
+      steps {
+        sh "echo ${PROJECT_NAME}"
+        sh "env"
+      }
+    }      
 
       stage('Env Deploy') {
             when {
@@ -75,6 +88,11 @@ pipeline {
                 junit testResults: 'target/surefire-reports/*.xml'
             }
 
+        }
+        post {
+          always{
+            echo  "Hello"
+          }
         }
     
   }
