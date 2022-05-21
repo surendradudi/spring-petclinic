@@ -9,7 +9,7 @@ pipeline {
         retry(2) 
         disableConcurrentBuilds()
     }
-    tool {
+    tools {
       maven '3.8'
     }
     triggers {
