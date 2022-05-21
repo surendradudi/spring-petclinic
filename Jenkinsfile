@@ -2,11 +2,12 @@ pipeline {
     agent {label 'agent'}
     environment{
       PROJECT_NAME = 'Spring-Petclinic'
-      UBUNTU_SSH_CRED = credentials('UBUNTU-SSH')
+      //UBUNTU_SSH_CRED = credentials('UBUNTU-SSH')
     }
     options { 
         timeout(time: 1, unit: 'HOURS')
         retry(2) 
+        disableConcurrentBuilds()
     }
     triggers {
         cron('0 * * * *')
