@@ -89,11 +89,11 @@ pipeline {
             }
 
         }
-        post {
-          always{
-            echo  "Hello"
-          }
-        }
+        // post {
+        //   always{
+        //     echo  "Hello"
+        //   }
+        // }
     
   }
 }
