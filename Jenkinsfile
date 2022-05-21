@@ -24,6 +24,14 @@ pipeline {
   }
   stages {
     stage('Check The Env') {
+      input{
+        message "Hello"
+        ok " yes we should....!"
+        submitter "Alice"
+        parameters{
+           string(name: 'COMPONENT', defaultValue: '', description: 'What the component....?')
+        }
+      }
       steps {
                
                  echo "Hello ${params.COMPONENT}"
