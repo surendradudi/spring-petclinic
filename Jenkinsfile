@@ -26,12 +26,11 @@ pipeline {
       steps {
                
                  echo "Hello ${params.COMPONENT}"
-
-                echo "Biography: ${params.COMMENT}"
-
-                echo "Toggle: ${params.FORCE_DEPLOYMENT}"
-
+                 echo "Biography: ${params.COMMENT}"
+                 echo "Toggle: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!"
+                 echo "my Password is ${params.PASSWORD}"
+
 
                 
             }
