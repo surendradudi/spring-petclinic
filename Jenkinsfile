@@ -10,7 +10,7 @@ pipeline {
         disableConcurrentBuilds()
     }
     triggers {
-        cron('0 * * * *')
+        cron('*/5 * * * *')
     }
     parameters {
         string(name: 'COMPONENT', defaultValue: '', description: 'What the component....?')
@@ -36,6 +36,7 @@ pipeline {
       steps {
         sh "echo ${PROJECT_NAME}"
         sh "env"
+        sh "mvn compile && mvn package "
       }
     }      
 
