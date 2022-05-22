@@ -22,7 +22,7 @@ pipeline {
         
   }
   stages {
-    stage ('parllel') {
+       stage ('parallel') {
        stage('Check The Env') {
       input{
         message "Should we continue?"
