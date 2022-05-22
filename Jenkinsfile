@@ -51,9 +51,9 @@ pipeline {
       }
       } 
     stage('tool and  branch') {
-      agent {
-        label 'agent'
-      }
+      //agent {
+        //label 'agent'
+      //}
       when {
         beforeAgent true
         branch 'springboot3'
