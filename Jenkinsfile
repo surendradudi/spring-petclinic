@@ -83,11 +83,7 @@ pipeline {
     stage('reporting') {
       steps {
                 junit testResults: 'target/surefire-reports/*.xml'
-                parallel (
-                  echo "hello"
-                  echo "hai"
-                  echo "hshs"
-                )
+              
             }
 
         }
