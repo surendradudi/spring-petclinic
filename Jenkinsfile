@@ -89,7 +89,7 @@ pipeline {
             }
 
         }
-        stages {
+      
     stage(‘Error’) {
       steps {
         error “failure test. It’s work”
@@ -100,7 +100,7 @@ pipeline {
         echo “is not pass here”
       }
    }
-  }
+  
   post {
     success {
      // mail to: team@example.com, subject: ‘The Pipeline success :(‘
