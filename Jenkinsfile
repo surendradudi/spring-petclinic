@@ -47,16 +47,13 @@ pipeline {
         }
       } 
       steps{
-        echo "Hello ${params.Software}"
+        echo "Biography: ${params.Software}"
       }
       }  
     //stage('parallel steps') {
      //parallel
     //}   
     stage('Knowing About Project Name') {
-      //environment {
-        //PROJECT_NAME = "spring-petclinic"
-      //}
       steps {
         sh "echo ${PROJECT_NAME}"
         sh "env"
