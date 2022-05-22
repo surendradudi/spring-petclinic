@@ -84,9 +84,9 @@ pipeline {
       steps {
                 junit testResults: 'target/surefire-reports/*.xml'
                 parallel (
-                  echo "****************"
-                  echo "&&&&&&&&&&&&&&&&&&"
-                  echo "#################"
+                  echo "hello"
+                  echo "hai"
+                  echo "hshs"
                 )
             }
 
