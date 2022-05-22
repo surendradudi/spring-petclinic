@@ -43,12 +43,12 @@ pipeline {
         ok " yes we should....!"
         submitter "Alice,bob"
         parameters {
-           string(name: 'Software', defaultValue: 'spring-petclinic', description: 'What the component....?')
+           string(name: 'Project', defaultValue: ' ', description: 'What the project....?')
         }
       } 
-      //steps{
-        //echo "${params.Software}"
-      //}
+      steps{
+        echo "${params.Project}"
+      }
       }  
     stage('Knowing About Project Name') {
       steps {
