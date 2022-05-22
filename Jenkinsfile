@@ -50,15 +50,15 @@ pipeline {
         echo "Hello ${params.Software}"
       }
       } 
-    stage('tool and  branch') {
+    //stage('tool and  branch') {
       //agent {
         //label 'agent'
       //}
-      when {
-        beforeAgent true
-        branch 'springboot3'
-      }
-    }  
+      //when {
+        //beforeAgent true
+        //branch 'springboot3'
+      //}
+    //} 
     //stage('parallel steps') {
      //parallel
     //}   
