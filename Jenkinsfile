@@ -26,6 +26,9 @@ pipeline {
             when {
                 branch 'main'
             }
+            steps {
+              echo "Working"
+            }
     stage('Check The Env') {
       input{
         message "Should we continue?"
