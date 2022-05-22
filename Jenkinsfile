@@ -43,7 +43,7 @@ pipeline {
         ok " yes we should....!"
         submitter "Alice,bob"
         parameters {
-           string(name: 'Software', defaultValue: '', description: 'What the component....?')
+           string(name: 'Software', defaultValue: 'spring-petclinic', description: 'What the component....?')
         }
       } 
       steps{
@@ -54,9 +54,9 @@ pipeline {
      //parallel
     //}   
     stage('Knowing About Project Name') {
-      environment {
-        PROJECT_NAME = "spring-petclinic"
-      }
+      //environment {
+        //PROJECT_NAME = "spring-petclinic"
+      //}
       steps {
         sh "echo ${PROJECT_NAME}"
         sh "env"
