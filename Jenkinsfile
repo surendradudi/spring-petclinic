@@ -22,46 +22,6 @@ pipeline {
         
   }
   stages {
-    stage('Parallel Stage') {
-            when {
-                branch 'main'
-            }
-            failFast true
-            parallel {
-                stage('Branch A') {
-                    agent {
-                        label "for-branch-a"
-                    }
-                    steps {
-                        echo "On Branch A"
-                    }
-                }
-                stage('Branch B') {
-                    agent {
-                        label "for-branch-b"
-                    }
-                    steps {
-                        echo "On Branch B"
-                    }
-                }
-                stage('Branch C') {
-                    agent {
-                        label "for-branch-c"
-                    }
-                    stages {
-                        stage('Nested 1') {
-                            steps {
-                                echo "In stage Nested 1 within Branch C"
-                            }
-                        }
-                        stage('Nested 2') {
-                            steps {
-                                echo "In stage Nested 2 within Branch C"
-                            }
-                        }
-                    }
-                }
-            }
     stage('Check The Env') {
       input{
         message "Should we continue?"
@@ -69,9 +29,14 @@ pipeline {
         submitter "Alice,bob"
       }
       steps {
-                 echo "Biography: ${params.COMMENT}"
+        parallel(
+          echo "Biography: ${params.COMMENT}"
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
-                 echo "${params.ENV} Present environment!"      
+                 echo "${params.ENV} Present environment!" 
+        ) 
+                //  echo "Biography: ${params.COMMENT}"
+                //  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
+                //  echo "${params.ENV} Present environment!"      
             }
         }
     stage('Approvel') {
@@ -133,6 +98,5 @@ pipeline {
         // }
     
   }
-}
 }
 
