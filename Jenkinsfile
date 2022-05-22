@@ -46,13 +46,10 @@ pipeline {
            string(name: 'Software', defaultValue: 'spring-petclinic', description: 'What the component....?')
         }
       } 
-      steps{
-        echo "${params.Software}"
-      }
+      //steps{
+        //echo "${params.Software}"
+      //}
       }  
-    //stage('parallel steps') {
-     //parallel
-    //}   
     stage('Knowing About Project Name') {
       steps {
         sh "echo ${PROJECT_NAME}"
