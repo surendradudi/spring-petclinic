@@ -90,7 +90,9 @@ pipeline {
 
         }
       
-    stage(‘Error’) {
+    
+  }
+  stage(‘Error’) {
       steps {
         error “failure test. It’s work”
       }
@@ -105,7 +107,6 @@ pipeline {
     success {
      // mail to: team@example.com, subject: ‘The Pipeline success :(‘
     }
-  }
   }
 }
 
