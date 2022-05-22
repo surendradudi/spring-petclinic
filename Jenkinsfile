@@ -23,9 +23,9 @@ pipeline {
   }
   stages {
     stage('Parallel Stage') {
-            when {
-                branch 'main'
-            }
+         //   when {
+           //     branch 'main'
+            //}
             steps {
               echo "Working"
             }
