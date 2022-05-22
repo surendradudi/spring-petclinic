@@ -22,7 +22,7 @@ pipeline {
         
   }
   stages {
-    stage('Check The Env & Approvel') {
+    stage('Check The Env & Approval') {
       input{
         message "Should we continue?"
         ok " yes we should....!"
