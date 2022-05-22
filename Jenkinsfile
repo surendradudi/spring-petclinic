@@ -29,14 +29,9 @@ pipeline {
         submitter "Alice,bob"
       }
       steps {
-        parallel(
-          echo "Biography: ${params.COMMENT}"
+                 echo "Biography: ${params.COMMENT}"
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
-                 echo "${params.ENV} Present environment!" 
-        ) 
-                //  echo "Biography: ${params.COMMENT}"
-                //  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
-                //  echo "${params.ENV} Present environment!"      
+                 echo "${params.ENV} Present environment!"      
             }
         }
     stage('Approvel') {
@@ -88,15 +83,14 @@ pipeline {
     stage('reporting') {
       steps {
                 junit testResults: 'target/surefire-reports/*.xml'
+                parallel (
+                  echo "****************"
+                  echo "&&&&&&&&&&&&&&&&&&"
+                  echo "#################"
+                )
             }
 
         }
-        // post {
-        //   always{
-        //     echo  "Hello"
-        //   }
-        // }
-    
   }
 }
 
