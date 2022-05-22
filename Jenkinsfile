@@ -2,7 +2,7 @@ pipeline {
     agent {label 'agent'}
     environment{
       PROJECT_NAME = 'Spring-Petclinic'
-      ssh-key = credentials('ssh-key')
+  
     }
     options { 
         timeout(time: 1, unit: 'HOURS')
@@ -36,7 +36,7 @@ pipeline {
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!" 
                  echo "${params.Project}"
-                 //sh "aws ec2 describe-instances --filters "Name-tag:Name,Values=jenkins_node-dev" --region us-east-1 | jq . Reservations[].Instances[].privateIpAddress |xargs -n1 >    
+   
             }
         }
     
