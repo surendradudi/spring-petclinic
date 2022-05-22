@@ -22,7 +22,6 @@ pipeline {
         
   }
   stages {
-  
     stage('Check The Env & Approvel') {
       input{
         message "Should we continue?"
@@ -33,8 +32,6 @@ pipeline {
         }
       }
       steps {
-       // addShortText background: 'yellow', color: 'black', borderColour: 'yellow',text: "INPUT = ${ENV}"
-
                  echo "Biography: ${params.COMMENT}"
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!" 
@@ -86,7 +83,6 @@ pipeline {
             }
 
         }
-        
   }
 }
 
