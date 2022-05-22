@@ -55,16 +55,12 @@ pipeline {
     //}   
     stage('Knowing About Project Name') {
       environment {
-        PROJECT_NAME = "java"
+        PROJECT_NAME = "spring-petclinic"
       }
       steps {
         sh "echo ${PROJECT_NAME}"
         sh "env"
         sh "mvn compile && mvn package "
-      }
-       when {
-        beforeAgent true
-        branch 'springboot3'
       }
     }      
 
