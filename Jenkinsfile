@@ -33,7 +33,7 @@ pipeline {
         }
       }
       steps {
-        addShortText background: 'yellow', color: 'black', borderColour: 'yellow',text: "INPUT = ${INPUT}"
+        addShortText background: 'yellow', color: 'black', borderColour: 'yellow',text: "INPUT = ${ENV}"
 
                  echo "Biography: ${params.COMMENT}"
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
