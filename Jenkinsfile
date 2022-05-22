@@ -22,7 +22,8 @@ pipeline {
         
   }
   stages {
-    stage('Check The Env') {
+    stage ('parllel') {
+       stage('Check The Env') {
       input{
         message "Should we continue?"
         ok " yes we should....!"
@@ -93,5 +94,77 @@ pipeline {
         // }
     
   }
+    }
+  //   stage('Check The Env') {
+  //     input{
+  //       message "Should we continue?"
+  //       ok " yes we should....!"
+  //       submitter "Alice,bob"
+  //     }
+  //     steps {
+  //                echo "Biography: ${params.COMMENT}"
+  //                echo "Toggle: ${params.FORCE_DEPLOYMENT}"
+  //                echo "${params.ENV} Present environment!"      
+  //           }
+  //       }
+  //   stage('Approvel') {
+  //     input{
+  //       message "Should we continue?"
+  //       ok " yes we should....!"
+  //       submitter "Alice,bob"
+  //       parameters {
+  //          string(name: 'Project', defaultValue: ' ', description: 'What the project....?')
+  //       }
+  //     } 
+  //     steps{
+  //       echo "${params.Project}"
+  //     }
+  //     }  
+  //   stage('Knowing About Project Name') {
+  //     steps {
+  //       sh "echo ${PROJECT_NAME}"
+  //       sh "env"
+  //     }
+  //   }        
+  //   stage('Message') {
+  //     steps {
+    
+  //       sh("echo ${env.BUILD_ID}")
+  //     }
+  //   }
+  //   stage('checking_build_id & jenkins_url') {
+  //     steps {
+  //               echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+  //           }
+  //       }
+
+        
+  //   stage('Source Code') {
+  //     steps {
+  //               git url: 'https://github.com/surendradudi/spring-petclinic.git', 
+  //               branch: 'main'
+  //           }
+
+  //       }
+  //   stage('Build the Code') {
+  //     steps {
+  //               sh script: 'mvn clean package'
+  //                archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
+               
+  //           }
+  //       }
+  //   stage('reporting') {
+  //     steps {
+  //               junit testResults: 'target/surefire-reports/*.xml'
+  //           }
+
+  //       }
+  //       // post {
+  //       //   always{
+  //       //     echo  "Hello"
+  //       //   }
+  //       // }
+    
+  // }
 }
 
