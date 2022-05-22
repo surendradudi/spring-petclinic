@@ -55,10 +55,10 @@ pipeline {
     }      
 
       stage('Env Deploy') {
-            when {
-                branch 'main'
-                environment name: 'DEPLOY_TO', value: 'main'
-            }
+            //when {
+              //  branch 'main'
+                //environment name: 'DEPLOY_TO', value: 'main'
+            //}
             steps {
                 echo 'Deploying'
             }
