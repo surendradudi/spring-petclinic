@@ -52,17 +52,7 @@ pipeline {
         sh "echo ${PROJECT_NAME}"
         sh "env"
       }
-    }      
-
-      stage('Env Deploy') {
-            when {
-                branch 'main'
-                environment name: 'DEPLOY_TO', value: 'main'
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }    
+    }        
     stage('Message') {
       steps {
     
