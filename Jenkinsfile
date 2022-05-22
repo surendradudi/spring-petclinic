@@ -23,6 +23,9 @@ pipeline {
   }
   stages {
     stage('Check The Env') {
+      when {
+        branch 'springboot3'
+      }
       input{
         message "Should we continue?"
         ok " yes we should....!"
@@ -46,7 +49,19 @@ pipeline {
       steps{
         echo "Hello ${params.Software}"
       }
-      }    
+      } 
+    stage('tool and  branch') {
+      agent {
+        label 'agent'
+      }
+      when {
+        beforeAgent true
+        branch 'springboot3'
+      }
+    }  
+    //stage('parallel steps') {
+     //parallel
+    //}   
     stage('Knowing About Project Name') {
       environment {
         PROJECT_NAME = "java"
