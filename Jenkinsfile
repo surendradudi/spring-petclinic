@@ -47,7 +47,7 @@ pipeline {
         }
       } 
       steps{
-        echo "Biography: ${params.Software}"
+        echo "${params.Software}"
       }
       }  
     //stage('parallel steps') {
@@ -57,7 +57,6 @@ pipeline {
       steps {
         sh "echo ${PROJECT_NAME}"
         sh "env"
-        sh "mvn compile && mvn package "
       }
     }      
 
