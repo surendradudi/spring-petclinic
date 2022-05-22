@@ -22,6 +22,12 @@ pipeline {
         
   }
   stages {
+    stage ('Update Build Description'){
+      steps {
+        addShortText background: 'yellow', color: 'black', borderColour: 'yellow',text: "INPUT = ${ENV}"
+
+      }
+    }
     stage('Check The Env & Approvel') {
       input{
         message "Should we continue?"
@@ -36,6 +42,9 @@ pipeline {
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!" 
                  echo "${params.Project}"
+          script {
+            manager.addShortText("v${manager.build.buildVariables.get('version')}")
+          }       
    
             }
         }
@@ -80,6 +89,23 @@ pipeline {
             }
 
         }
+        stages {
+    stage(‘Error’) {
+      steps {
+        error “failure test. It’s work”
+      }
+    }
+    stage(‘ItNotWork’) {
+      steps {
+        echo “is not pass here”
+      }
+   }
+  }
+  post {
+    success {
+      mail to: team@example.com, subject: ‘The Pipeline success :(‘
+    }
+  }
   }
 }
 
