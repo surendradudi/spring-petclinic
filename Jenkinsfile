@@ -12,9 +12,9 @@ pipeline {
     tools {
       maven 'mvn-3.6'
     }
-    triggers {
-        cron('*/5 * * * *')
-    }
+    //triggers {
+      //  cron('*/5 * * * *')
+    //}
     parameters {
         text(name: 'COMMENT', defaultValue: '', description: 'Write The Comment About The Job Why Are You Running....!!!')
         booleanParam(name: 'FORCE_DEPLOYMENT', defaultValue: true, description: 'Check This For Force Deployment From Scrach')
