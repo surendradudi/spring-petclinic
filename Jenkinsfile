@@ -23,9 +23,6 @@ pipeline {
   }
   stages {
     stage('Check The Env') {
-      when {
-        branch 'springboot3'
-      }
       input{
         message "Should we continue?"
         ok " yes we should....!"
