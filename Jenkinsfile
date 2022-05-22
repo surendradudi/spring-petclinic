@@ -49,13 +49,7 @@ pipeline {
       steps{
         echo "Hello ${params.Software}"
       }
-      } 
-    stage('branch') {
-      when {
-        beforeAgent true
-        branch 'springboot3'
-      }
-    } 
+      }  
     //stage('parallel steps') {
      //parallel
     //}   
@@ -67,6 +61,10 @@ pipeline {
         sh "echo ${PROJECT_NAME}"
         sh "env"
         sh "mvn compile && mvn package "
+      }
+       when {
+        beforeAgent true
+        branch 'springboot3'
       }
     }      
 
