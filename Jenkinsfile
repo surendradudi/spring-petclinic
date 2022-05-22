@@ -36,9 +36,6 @@ pipeline {
                  echo "Toggle: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!" 
                  echo "${params.Project}"
-          script {
-            manager.addShortText("v${manager.build.buildVariables.get('version')}")
-          }       
    
             }
         }
