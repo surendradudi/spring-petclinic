@@ -22,19 +22,7 @@ pipeline {
         
   }
   stages {
-    stage('Check The Env') {
-      input{
-        message "Should we continue?"
-        ok " yes we should....!"
-        submitter "Alice,bob"
-      }
-      steps {
-                 echo "Biography: ${params.COMMENT}"
-                 echo "Toggle: ${params.FORCE_DEPLOYMENT}"
-                 echo "${params.ENV} Present environment!"      
-            }
-        }
-    stage('Approvel') {
+    stage('Check The Env & Approvel') {
       input{
         message "Should we continue?"
         ok " yes we should....!"
@@ -42,11 +30,15 @@ pipeline {
         parameters {
            string(name: 'Project', defaultValue: ' ', description: 'What the project....?')
         }
-      } 
-      steps{
-        echo "${params.Project}"
       }
-      }  
+      steps {
+                 echo "Biography: ${params.COMMENT}"
+                 echo "Toggle: ${params.FORCE_DEPLOYMENT}"
+                 echo "${params.ENV} Present environment!" 
+                  echo "${params.Project}"    
+            }
+        }
+    
     stage('Knowing About Project Name') {
       steps {
         sh "echo ${PROJECT_NAME}"
