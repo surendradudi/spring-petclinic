@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'agent'
+        //label 'agent'
         docker {image '11.0.1-jre-slim-stretch'}
         }
     environment{
