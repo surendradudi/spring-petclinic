@@ -32,8 +32,8 @@ pipeline {
         }
       }
       steps {
-                 echo "Biography: ${params.COMMENT}"
-                 echo "Toggle: ${params.FORCE_DEPLOYMENT}"
+                 echo "COMMENT: ${params.COMMENT}"
+                 echo "FORCE_DEPLOYMENT: ${params.FORCE_DEPLOYMENT}"
                  echo "${params.ENV} Present environment!" 
                  echo "${params.Project}"
    
@@ -45,13 +45,7 @@ pipeline {
         sh "echo ${PROJECT_NAME}"
         sh "env"
       }
-    }        
-    stage('Message') {
-      steps {
-    
-        sh("echo ${env.BUILD_ID}")
-      }
-    }
+    }       
     stage('checking_build_id & jenkins_url') {
       steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
