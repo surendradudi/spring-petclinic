@@ -41,6 +41,14 @@ pipeline {
    
             }
         }
+    stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }  
     stage('Test') {
             steps {
                 sh 'java --version' 
