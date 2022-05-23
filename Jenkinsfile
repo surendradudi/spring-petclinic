@@ -18,7 +18,7 @@ pipeline {
       //  cron('*/5 * * * *')
     //}
     parameters {
-        text(name: 'COMMENT', defaultValue: '', description: 'Write The Comment About The Job Why Are You Running....!!!')
+        text(name: 'COMMENT', defaultValue: 'This Project Is About Java', description: 'Write The Comment About The Job Why Are You Running....!!!')
         booleanParam(name: 'FORCE_DEPLOYMENT', defaultValue: true, description: 'Check This For Force Deployment From Scrach')
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Environment')
         
@@ -30,7 +30,7 @@ pipeline {
         ok " yes we should....!"
         submitter "Alice,bob"
         parameters {
-           string(name: 'Project', defaultValue: ' ', description: 'What the project....?')
+           string(name: 'Project', defaultValue: 'spring-petclinic ', description: 'What the project....?')
         }
       }
       steps {
