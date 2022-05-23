@@ -46,7 +46,7 @@ pipeline {
                 sh 'java --version'
                 sh 'docker info'
                 sh 'docker images'
-                sh 'docker-compose up
+                sh '''docker-compose up'''
             }
         }
     stage('Knowing About Project Name') {
