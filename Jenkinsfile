@@ -1,7 +1,6 @@
 pipeline {
     agent  {
-        //label 'agent'
-        label 'docker'
+        label 'agent'
         }
     environment{
       PROJECT_NAME = 'Spring-Petclinic'
