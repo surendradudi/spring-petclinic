@@ -44,9 +44,9 @@ pipeline {
     stage('Test') {
             steps {
                 sh 'java --version'
-                sh 'docker info'
-                sh 'docker images'
-                sh '''docker-compose up'''
+                sh 'sudo docker info'
+                sh 'sudo docker images'
+                sh 'sudo docker-compose up'
             }
         }
     stage('Knowing About Project Name') {
