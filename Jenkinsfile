@@ -43,10 +43,7 @@ pipeline {
         }
     stage('Test') {
             steps {
-                sh 'java --version'
-                sh 'sudo docker info'
-                sh 'sudo docker build -t openjdk .'
-                sh 'sudo docker images'
+                sh ''' java --version && sudo docker info && sudo docker build -t openjdk . && sudo docker images '''
             }
         }
     stage('Knowing About Project Name') {
