@@ -1,4 +1,3 @@
-@Library('spring-petclinic') _
 pipeline {
     agent  {
         label 'agent'
