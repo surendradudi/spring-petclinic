@@ -1,7 +1,7 @@
 pipeline {
-    agent any {
+    agent  {
         //label 'agent'
-        docker {image '11.0.1-jre-slim-stretch'}
+        label 'docker {image '11.0.1-jre-slim-stretch'}'
         }
     environment{
       PROJECT_NAME = 'Spring-Petclinic'
