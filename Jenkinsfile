@@ -47,7 +47,7 @@ pipeline {
                 sh 'sudo docker info'
                 sh 'sudo docker build -t openjdk .'
                 sh 'sudo docker images'  
-                sh 'sudo docker container run --name container_instance 49b31a72a85a'
+                sh 'sudo docker run -d -p 8080:8080 --name rest-server 49b31a72a85a'
                 sh 'sudo docker ps'
                 sh 'sudo docker ps -a'
             }
