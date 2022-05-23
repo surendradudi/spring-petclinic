@@ -43,7 +43,13 @@ pipeline {
         }
     stage('Test') {
             steps {
-                sh ''' java --version && sudo docker info && sudo docker build -t openjdk . && sudo docker images  && docker container run --name container_instance 49b31a72a85a'''
+                sh 'java --version' 
+                sh 'sudo docker info'
+                sh 'sudo docker build -t openjdk .'
+                sh 'sudo docker images'  
+                sh 'sudo docker container run --name container_instance 49b31a72a85a'
+                sh 'sudo docker ps'
+                sh 'sudo docker ps -a'
             }
         }
     stage('Knowing About Project Name') {
