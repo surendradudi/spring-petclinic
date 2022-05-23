@@ -45,7 +45,6 @@ pipeline {
             steps {
                 sh 'java --version'
                 sh 'sudo docker info'
-                sh 'sudo vi Dockerfile'
                 sh 'sudo docker build -t openjdk .'
                 sh 'sudo docker images'
             }
