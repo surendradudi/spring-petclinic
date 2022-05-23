@@ -48,7 +48,6 @@ pipeline {
                 sh 'sudo vi Dockerfile'
                 sh 'sudo docker build -t openjdk .'
                 sh 'sudo docker images'
-                sh 'sudo docker-compose up'
             }
         }
     stage('Knowing About Project Name') {
