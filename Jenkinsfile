@@ -1,6 +1,7 @@
 pipeline {
     agent  {
-        label 'agent'
+        //label 'agent'
+        label 'prod'
         }
     environment{
       PROJECT_NAME = 'Spring-Petclinic'
