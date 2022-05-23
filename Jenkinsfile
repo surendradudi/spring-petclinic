@@ -46,7 +46,7 @@ pipeline {
                 sh 'java --version' 
                 sh 'sudo docker info'
                 //sh 'sudo docker build -t openjdk .'
-                //sh 'sudo docker image rm 8496972ace0b 0b02e79b6b25 754edacd5dca 6c1957a6b355'
+                sh 'sudo docker image rm 787bf5278e3b 4441e3a16970 c511c8cf4b3c '
                 sh 'sudo docker images'  
             }
         }
