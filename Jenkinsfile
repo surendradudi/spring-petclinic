@@ -58,7 +58,7 @@ pipeline {
                 sh 'sudo docker info'
                 sh 'sudo docker build -t spc .'
                 sh 'sudo docker images'
-                sh 'sudo docker run -it -d -p 8083:8080 spc'
+                sh 'sudo docker run -it -d -p 8084:8080 spc'
             }
         }
     stage('Knowing About Project Name') {
@@ -74,11 +74,11 @@ pipeline {
           }
 
         
-//     stage('Source Code') {
-//       steps {
-//                 git url: 'https://github.com/surendradudi/spring-petclinic.git', 
-//                 branch: 'main'
-//             }
+     stage('Source Code') {
+       steps {
+                 git url: 'https://github.com/surendradudi/spring-petclinic.git', 
+                 branch: 'main'
+             }
 
 //         }
 //     stage('Build the Code') {
