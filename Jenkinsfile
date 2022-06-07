@@ -52,7 +52,7 @@ pipeline {
                 sh 'java --version' 
                 sh 'sudo apt-get install docker.io -y '
                 sh 'sudo docker info'
-                sh 'sudo docker build -t spc.'
+                sh 'sudo docker build -t spc .'
                 sh 'sudo docker images'
                 sh 'sudo docker run -it -d -p 8081:8080 spc'
             }
