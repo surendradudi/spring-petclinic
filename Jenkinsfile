@@ -19,7 +19,7 @@ pipeline {
       //  cron('*/5 * * * *')
     //}
     parameters {
-        text(name: 'COMMENT', defaultValue: ' ', description: 'Write The Comment About The Job Why Are You Running....!!!')
+        text(name: 'COMMENT', defaultValue: 'This About Java Application ', description: 'Write The Comment About The Job Why Are You Running....!!!')
         booleanParam(name: 'FORCE_DEPLOYMENT', defaultValue: true, description: 'Check This For Force Deployment From Scrach')
         choice(name: 'ENV', choices: ['main', 'gh-pages', 'springboot3','wavefront'], description: 'Pick The Needed Environment')
         
@@ -31,7 +31,7 @@ pipeline {
         ok " yes we should....!"
         submitter "Alice,bob"
         parameters {
-           string(name: 'Project', defaultValue: ' ', description: 'What the project....?')
+           string(name: 'Project', defaultValue: 'Spring-Petclinic', description: 'What the project....?')
         }
       }
       steps {
@@ -50,7 +50,7 @@ pipeline {
     stage('Test') {
             steps {
                 sh 'java --version' 
-                sh 'sudo apt-get install docker.io'
+                sh 'sudo apt-get install docker.io -y '
                 sh 'sudo docker info'
                 sh 'sudo docker build -t openjdk .'
                 //sh 'sudo docker image rm 787bf5278e3b 4441e3a16970 c511c8cf4b3c '
