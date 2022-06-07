@@ -48,8 +48,12 @@ pipeline {
             }
         }  
     stage('Test') {
-            steps {
-                sh 'java --version' 
+            steps { 
+                sh 'sudo apt-get update'
+                sh 'sudo apt-get install openjdk-11-jdk -y '
+                sh 'sudo apt-get install maven -y '
+                sh 'mvn --version'
+                sh 'mvn clean package'
                 sh 'sudo apt-get install docker.io -y '
                 sh 'sudo docker info'
                 sh 'sudo docker build -t spc .'
@@ -63,34 +67,34 @@ pipeline {
         sh "env"
        }
      }       
-     stage('checking_build_id & jenkins_url') {
-       steps {
-                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-             }
-         }
+//      stage('checking_build_id & jenkins_url') {
+//        steps {
+//                  echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+//              }
+//          }
 
         
-    stage('Source Code') {
-      steps {
-                git url: 'https://github.com/surendradudi/spring-petclinic.git', 
-                branch: 'main'
-            }
+//     stage('Source Code') {
+//       steps {
+//                 git url: 'https://github.com/surendradudi/spring-petclinic.git', 
+//                 branch: 'main'
+//             }
 
-        }
-    stage('Build the Code') {
-      steps {
-                sh script: 'mvn clean package'
-                 archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
+//         }
+//     stage('Build the Code') {
+//       steps {
+//                 sh script: 'mvn clean package'
+//                  archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
                
-            }
-        }
-    stage('reporting') {
-      steps {
-                junit testResults: 'target/surefire-reports/*.xml'
+//             }
+//         }
+//     stage('reporting') {
+//       steps {
+//                 junit testResults: 'target/surefire-reports/*.xml'
               
-            }
+//             }
 
-    }
+//     }
   }
     
 }
