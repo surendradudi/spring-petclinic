@@ -57,10 +57,9 @@ pipeline {
                 sh 'sudo apt-get install docker.io -y '
                 sh 'sudo docker info'
                 sh 'sudo docker build -t spc .'
-                sh 'sudo docker rmi d0e1132d5e44 69e1710ca296 ba7fdd536c6f bd54ea63328b   e7ab51511f55 f716c4e5ba92 75681d40c35d d8e3863bc758  72451e707d77' 
                 sh 'sudo docker images'
                 sh 'ls'
-                sh 'sudo docker run -it -d -p 8085:8080 spc'
+                sh 'sudo docker run -it -d -p 8086:8080 spc'
             }
         }
     stage('Knowing About Project Name') {
