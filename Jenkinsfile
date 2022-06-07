@@ -57,17 +57,17 @@ pipeline {
                 sh 'sudo docker images'  
             }
         }
-//     stage('Knowing About Project Name') {
-//       steps {
-//         sh "echo ${PROJECT_NAME}"
-//         sh "env"
-//       }
-//     }       
-//     stage('checking_build_id & jenkins_url') {
-//       steps {
-//                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-//             }
-//         }
+    stage('Knowing About Project Name') {
+       steps {
+         sh "echo ${PROJECT_NAME}"
+        sh "env"
+       }
+     }       
+     stage('checking_build_id & jenkins_url') {
+       steps {
+                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+             }
+         }
 
         
     stage('Source Code') {
