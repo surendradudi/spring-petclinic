@@ -59,7 +59,7 @@ pipeline {
         }
     stage('Knowing About Project Name') {
        steps {
-         sh "echo ${PROJECT_NAME}"
+        // sh "echo ${PROJECT_NAME}"
         sh "env"
        }
      }       
