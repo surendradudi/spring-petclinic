@@ -58,7 +58,7 @@ pipeline {
                 sh 'sudo docker info'
                 sh 'sudo docker build -t spc .'
                 sh 'sudo docker images'
-                sh 'sudo docker run -it -d -p 8081:8080 spc'
+                sh 'sudo docker run -it -d -p 8080:8080 spc'
             }
         }
     stage('Knowing About Project Name') {
