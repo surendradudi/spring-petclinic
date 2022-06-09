@@ -1,8 +1,8 @@
 pipeline {
-    agent {
+    agent any {
         label 'agent'
         //label 'prod'
-        //}
+        }
     environment{
       PROJECT_NAME = 'Spring-Petclinic'
   
@@ -48,54 +48,49 @@ pipeline {
             }
         }  
     stage('Test') {
-            steps { 
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install openjdk-11-jdk -y '
-                sh 'sudo apt-get install maven -y '
-                sh 'mvn --version'
-                sh 'mvn clean package'
+            steps {
+                sh 'java --version' 
                 sh 'sudo apt-get install docker.io -y '
                 sh 'sudo docker info'
-                sh 'sudo docker build -t spc .'
-                sh 'sudo docker images'
-                sh 'ls'
-                sh 'sudo docker run -it -d -p 8086:8080 spc'
+                sh 'sudo docker build -t openjdk .'
+                //sh 'sudo docker image rm 787bf5278e3b 4441e3a16970 c511c8cf4b3c '
+                sh 'sudo docker images'  
             }
         }
     stage('Knowing About Project Name') {
        steps {
-        sh "echo ${PROJECT_NAME}"
+        // sh "echo ${PROJECT_NAME}"
         sh "env"
        }
      }       
-      stage('checking_build_id & jenkins_url') {
-        steps {
-                  echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-              }
-          }
+     stage('checking_build_id & jenkins_url') {
+       steps {
+                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+             }
+         }
 
         
-     stage('Source Code') {
-       steps {
-                 git url: 'https://github.com/surendradudi/spring-petclinic.git', 
-                 branch: 'main'
-             }
+    stage('Source Code') {
+      steps {
+                git url: 'https://github.com/surendradudi/spring-petclinic.git', 
+                branch: 'main'
+            }
 
-         }
-     stage('Build the Code') {
-       steps {
-                 sh script: 'mvn clean package'
-                  archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
+        }
+    stage('Build the Code') {
+      steps {
+                sh script: 'mvn clean package'
+                 archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
                
-             }
-         }
-     stage('reporting') {
-       steps {
-                 junit testResults: 'target/surefire-reports/*.xml'
+            }
+        }
+    stage('reporting') {
+      steps {
+                junit testResults: 'target/surefire-reports/*.xml'
               
-             }
+            }
 
-     }
+    }
   }
     
 }
