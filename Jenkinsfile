@@ -1,5 +1,5 @@
 pipeline {
-    agent none {
+    agent any {
         //label 'agent'
         //label 'prod'
         }
