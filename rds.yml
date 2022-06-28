@@ -1,6 +1,6 @@
 ---
 - name: Install and set up Postgres 14 in Ubuntu 20.04
-  hosts: db
+  hosts: all
   become: yes
   gather_facts: False
   vars:
