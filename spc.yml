@@ -1,0 +1,30 @@
+---
+- name: Install Java
+  hosts: servers
+  become: yes
+  tasks:
+    - name: installing ...
+      apt: name:openjdk-11-jdk state=latest
+    - name: Install Maven
+      hosts: servers
+      become: yes
+      tasks:
+        - name: installing ...
+          apt: name=maven state=latest
+        - name: Copy Snapshot
+          hosts: servers
+          become: yes
+          tasks:
+            - name: copying ...
+              copy:
+              src: /var/lib/jenkins/workspace/petclinic/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
+              dest: /home/jenkins/snapshot.jar
+            - name: Run petclinic
+              hosts: servers
+              become: yes
+              become_user: ubuntu
+              tasks:
+                - name: running ...
+                  systemd:
+                    name: petclinic
+                    state: started

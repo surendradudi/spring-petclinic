@@ -1,0 +1,11 @@
+---
+- hosts: servers
+  become: yes
+  tasks:
+    - name: "Install a list of packages"
+      yum:
+       name:
+       - nginx
+       - PostgreSQL
+       - PostgreSQL-server
+      state: present

@@ -1,0 +1,87 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+   - name: "install the latest version of Apache and MariaDB"
+     apt:
+       name:
+         - httpd
+         - mariadb-server
+     state: latest
+
+   - name: "Install a list of packages"
+     apt:
+        name:
+          - nginx
+          - postgresql
+          - postgresql-server
+        state: present  
+
+   - name: "Start service nginx, based on running process /usr/bin/nginx"
+     service:
+        name: nginx
+        pattern: /usr/bin/nginx
+        state: started 
+
+   - name: "Restart network service for interface eth0"
+     service:
+       name: network
+       state: restarted
+       args: eth0
+
+
+   - name: Copy a new 'file From Source of Remote Server To Hosts'
+     copy:
+       src: /home/ubuntu/spc.yml
+       dest: /tmp/spc.yml
+       owner: ubuntu
+       group: ubuntu
+       mode: '0644'
+       backup: yes
+
+   - name: "Copy file with owner and permission, using symbolic representation"
+     copy:
+      src: /home/ubuntu/spc.yml
+      dest: /tmp/spc.yml
+      owner: spc.yml
+      group: spc.yml
+      mode: u=rw,g=r,o=r
+
+
+   - name: "Display all variables/facts known for a host"
+     debug:
+       var: servers[44.197.207.154]
+       verbosity: 4  
+
+   - name: "Write some content in a file /tmp/yml"
+     copy:
+      dest: /tmp/hello.txt
+      content: |
+       Good Morning!
+       Awesome sunshine today.
+      register: display_file_content
+
+   - name: "Debug display_file_content"
+     debug:
+      var: display_file_content
+      verbosity: 2               
+
+   - name: "Change file ownership, group and permissions"
+     file:
+      path: /etc/foo.conf
+      owner: foo
+      group: foo
+      mode: '0644'  
+   
+   - name: "Create a directory if it does not exist"
+     file:
+      path: /etc/some_directory
+      state: directory
+      mode: '0755'
+
+   - name: "Ensure SELinux is set to enforcing mode"
+     lineinfile:
+      path: /etc/selinux/config
+      regexp: '^SELINUX='
+      line: SELINUX=enforcing
+

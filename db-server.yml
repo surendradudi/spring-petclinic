@@ -1,0 +1,50 @@
+---
+- hosts: db
+  vars:
+    db_user: dbuserubuntu
+    db_name: dbubuntu
+    db_password: dbpassubuntu@123
+  tasks:
+   - name: Install dependencies for PostgreSQL
+     apt: 
+     #name={{item}} update_cache=true state=latest
+     with_items:
+     - bash
+     - openssl
+     - libssl-dev
+     - libssl-doc
+   - name: Install PostgreSQL 
+     apt: 
+     #name={{ item }} update_cache=true state=present
+     with_items:
+     - postgresql
+     - postgresql-contrib
+     - libpq-dev
+     - python3-psycopg2
+   - name: Ensure the PostgreSQL service is running
+     service: name=postgresql state=started enabled=yes
+
+   - name: Create the database specified in vars
+     become: true
+     become_user: postgres
+     postgresql_db: name=dbubuntu
+          template='template0'
+          state=present
+   - name: Ensure user has access to the new database
+     become: true
+     become_user: postgres
+     postgresql_user: db=dbubuntu
+          name=dbuserubuntu
+          password=dbpassubuntu@123
+          priv=ALL
+          state=present
+   - name: Ensure user does not have unnecessary permissions
+     become: true
+     become_user: postgres
+     postgresql_user: name=dbuserubuntu
+          role_attr_flags=NOSUPERUSER,NOCREATEDB
+          state=present  
+   - name: Add some dummy data to our database
+     become: true
+     become_user: postgres
+     shell: db dbubuntu < /tmp/dump.sql

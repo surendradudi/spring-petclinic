@@ -2,11 +2,10 @@
  - hosts: all
    become: yes
    tasks:
-    - name: Install supervisord
-      apt:
-        name: supervisor
-        state: present
-        update_cache: yes
+    - name: ensure the jenkins apt repository key is installed
+    - apt_key: url:https://pkg.jenkins.io/debian-stable/jenkins.io.key
+    - state: present
+    
 
     - name: Reloaded supervisord
       service:
@@ -20,12 +19,5 @@
           state: restarted
           enabled: yes
 
-    - name: Install supervisord
-      become: true
-      apt:
-        name: supervisor
-        state: present
-        update_cache: yes
-      tags:
-         supervisor
-    
+
+
